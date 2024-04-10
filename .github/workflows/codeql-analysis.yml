@@ -54,8 +54,13 @@ jobs:
     # ✏️ If the Autobuild fails above, remove it and uncomment the following three lines
     #    and modify them (or add more) to build your code if your project
     #    uses a compiled language
-
+    
     - run: |
+        if [ "$USER" = "root" ]; then
+           echo "Running as root user"
+        else
+            echo "Running as non-root user"
+        fi
         make build
 
     - name: Perform CodeQL Analysis
